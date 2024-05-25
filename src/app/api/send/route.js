@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 // Hardcoded API key and from email
-const resendApiKey = "re_YsNJSCEu_96s8hWd5VX2fotawjUrSabHW";
+//const resendApiKey = "re_YsNJSCEu_96s8hWd5VX2fotawjUrSabHW";
 const fromEmail = "kumarkiran0893@gmail.com";
 
-const resend = new Resend(resendApiKey);
+const resend = new Resend("re_YsNJSCEu_96s8hWd5VX2fotawjUrSabHW");
 
 export async function POST(req) {
   const { email, subject, message } = await req.json();
