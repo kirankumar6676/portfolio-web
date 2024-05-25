@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+// Hardcoded API key and from email
+const resendApiKey = "re_YsNJSCEu_96s8hWd5VX2fotawjUrSabHW";
+const fromEmail = "kumarkiran0893@gmail.com";
 
-export async function POST(req, res) {
+const resend = new Resend(resendApiKey);
+
+export async function POST(req) {
   const { email, subject, message } = await req.json();
   console.log(email, subject, message);
   try {
@@ -23,6 +26,6 @@ export async function POST(req, res) {
     });
     return NextResponse.json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    return NextResponse.json({ error: error.message });
   }
 }
